@@ -33,7 +33,8 @@ public class BoardController {
     //    @RequestParam("title") String title, @RequestParam("content") String content
     //글 작성 완료 띄우기
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board, Model model, @RequestParam("file") MultipartFile file) throws Exception {
+    public String boardWritePro(Board board, Model model,
+                                @RequestParam("file") MultipartFile file) throws Exception {
 
 //        System.out.println("제목 : "+title);
 //        System.out.println("내용 : "+content);

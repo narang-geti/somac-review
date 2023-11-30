@@ -21,21 +21,21 @@
 <div class="layout">
     <table>
         <thead>
-            <tr>
-                <th>글번호</th>
-                <th>제목</th>
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
 
-            </tr>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="board:${list}">
-                <td th:text="${board.id}">1</td>
-                <td>
-                    <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">
+        <tr th:each="board:${list}">
+            <td th:text="${board.id}">1</td>
+            <td>
+                <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">
 
-                    </a>
-                </td>
-            </tr>
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 
