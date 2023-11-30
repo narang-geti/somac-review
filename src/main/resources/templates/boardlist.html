@@ -3,51 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <title>리뷰 리스트 페이지</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #BBD2EC;
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout {
+            width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #98E1FB;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #75F0F2;
+            color: #F9F871;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            background-color: #E9EDEA;
+            border-bottom: 1px solid #7EFACF;
+        }
+
+        a {
+            color: #101116;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #B3FE9E;
+        }
+
+        .pagination a, .pagination strong {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination a {
+            background-color: #7EFACF;
+            color: #101116;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background-color: #B3FE9E;
+        }
+
+        .pagination strong {
+            background-color: #F9F871;
+            color: #101116;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #75F0F2;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #B3FE9E;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #F9F871;
+            color: #101116;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B3FE9E;
+        }
+
+    </style>
 </head>
-
-<style>
-
-    .layout {
-        width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-    }
-
-
-</style>
-
 <body>
-
 <div class="layout">
     <table>
         <thead>
         <tr>
             <th>글번호</th>
             <th>제목</th>
-
         </tr>
         </thead>
         <tbody>
         <tr th:each="board:${list}">
             <td th:text="${board.id}">1</td>
-            <td>
-                <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">
-
-                </a>
-            </td>
+            <td><a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a></td>
         </tr>
         </tbody>
     </table>
 
-    <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-        <a th:if="${page != nowPage}" th:href="@{/board/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
-        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
-    </th:block>
+    <div class="pagination" th:if="${#numbers.sequence(startPage, endPage)}">
+        <a th:each="page : ${#numbers.sequence(startPage, endPage)}"
+           th:href="@{/board/list(page=${page}, searchKeyword=${param.searchKeyword})}"
+           th:text="${page}" th:classappend="${page == nowPage} ? 'current'"></a>
+    </div>
+
     <form th:action="@{/board/list}" method="get">
-        <input type="text" name="searchKeyword">
+        <input type="text" name="searchKeyword" placeholder="검색어 입력">
         <button type="submit">검색</button>
     </form>
 </div>
-
 </body>
 </html>

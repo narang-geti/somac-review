@@ -24,6 +24,11 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @GetMapping("/")
+    public String start() {
+        return "start"; // start.html 뷰의 이름
+    }
+
     @GetMapping("/board/write")//어떤 url로 접근할 것인지 지정 localhost:8080/board/write
     public String boardWriteForm() {
         //어떤 viewfile인지 입력

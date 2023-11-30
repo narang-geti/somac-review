@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #BBD2EC; /* 밝은 하늘색 배경 */
+            color: #75F0F2; /* 연한 터키색 텍스트 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
 </head>
-
+<body>
 <script th:inline="javascript">
-
     /*<![CDATA[*/
-
     var message = [[${message}]];
     alert(message);
-
     location.replace([[${searchUrl}]]);
-
     /*]]>*/
-
 </script>
-<body>
-
 </body>
 </html>

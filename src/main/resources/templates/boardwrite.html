@@ -3,27 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>리뷰 작성폼</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #BBD2EC; /* 배경색 */
+            color: #75F0F2; /* 텍스트 색상 */
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout {
+            width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #98E1FB; /* 레이아웃 배경색 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 효과 */
+        }
+
+        .layout input, .layout textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border: 1px solid #75F0F2; /* 테두리 색상 */
+            border-radius: 5px;
+            transition: border-color 0.3s ease; /* 테두리 색상 변화 애니메이션 */
+        }
+
+        .layout input:focus, .layout textarea:focus {
+            border-color: #7EFACF; /* 포커스 시 테두리 색상 변경 */
+        }
+
+        .layout input[type="file"] {
+            padding: 5px;
+            background-color: #E9EDEA; /* 파일 입력 배경색 */
+            border: none; /* 파일 입력 테두리 제거 */
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #F9F871; /* 버튼 배경색 */
+            color: #2F3148; /* 버튼 텍스트 색상 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 배경 색상 변화 애니메이션 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 버튼 그림자 효과 */
+        }
+
+        button:hover {
+            background-color: #B3FE9E; /* 호버시 버튼 배경색 변경 */
+        }
+    </style>
 </head>
-
-<style>
-    .layout {
-        width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-    }
-
-    .layout input {
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: 10px
-    }
-
-    .layout textarea {
-        width: 100%;
-        margin-top: 10px;
-        min-height: 300px;
-    }
-</style>
 <body>
 <div class="layout">
     <form action="/board/writepro" method="post" enctype="multipart/form-data">
@@ -32,10 +66,6 @@
         <input type="file" name="file">
         <button type="submit">작성</button>
     </form>
-
 </div>
-
-
 </body>
 </html>
-
