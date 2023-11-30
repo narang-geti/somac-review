@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class BoardController {
@@ -24,15 +25,20 @@ public class BoardController {
         return "boardwrite";
     }
 //    @RequestParam("title") String title, @RequestParam("content") String content
+    //글 작성 완료 띄우기
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board){
+    public String boardWritePro(Board board, Model model, @RequestParam("file") MultipartFile file) throws Exception{
 
 //        System.out.println("제목 : "+title);
 //        System.out.println("내용 : "+content);
 //        System.out.println(board.getTitle());
-        boardService.write(board);
+        boardService.write(board, file);
 
-        return "";
+        model.addAttribute("message","리뷰 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl","/board/list");
+
+
+        return "message";
     }
 
     @GetMapping("/board/list")
@@ -67,18 +73,15 @@ public class BoardController {
     }
 
     @PostMapping("/board/update/{id}")
-    public String boardUpdate(@PathVariable("id") Integer id, Board board){
+    public String boardUpdate(@PathVariable("id") Integer id, Board board, @RequestParam("file") MultipartFile file) throws Exception{
 
-        //기존 내용을 가져옴
-        Board boardTemp=boardService.boardView(id);
-        //기존 내용에 새로 덮어씀
+        Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
 
-        boardService.write(boardTemp);
+        boardService.write(boardTemp, file);
 
         return "redirect:/board/list";
 
     }
-
 }

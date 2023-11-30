@@ -26,9 +26,10 @@
 </style>
 <body>
 <div class="layout">
-    <form action="/board/writepro" method="post">
+    <form action="/board/writepro" method="post" enctype="multipart/form-data">
         <input name="title" type="text" placeholder="제목">
         <textarea name="content" placeholder="리뷰 작성"></textarea>
+        <input type="file" name="file">
         <button type="submit">작성</button>
     </form>
 
