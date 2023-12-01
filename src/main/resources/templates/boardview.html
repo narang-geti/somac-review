@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <title>게시글 상세 페이지</title>
 </head>
+<style>
+    h1 {
+        color: rgba(141, 172, 209, 1);
+        background-color: #f0f0f0; /* 예시용 배경 색상 */
+        border: 2px solid rgba(141, 172, 209, 1);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    p {
+        color: black;
+        background-color: #f0f0f0; /* 예시용 배경 색상 */
+        border: 2px solid rgba(141, 172, 209, 1);
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    a {
+        color: rgba(141, 172, 209, 1);
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
 <body>
 
 <h1 th:text="${board.title}">제목입니다.</h1>

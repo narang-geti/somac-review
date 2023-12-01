@@ -6,15 +6,63 @@
 </head>
 
 <style>
-
     .layout {
         width: 500px;
         margin: 0 auto;
         margin-top: 40px;
     }
 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid rgba(141, 172, 209, 1);
+    }
 
+    table th, table td {
+        border: 1px solid rgba(141, 172, 209, 1);
+        padding: 10px;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #f0f0f0;
+    }
+
+    table a {
+        color: rgba(141, 172, 209, 1);
+        text-decoration: none;
+    }
+
+    .page-link {
+        color: rgba(141, 172, 209, 1);
+    }
+
+    .page-link.current {
+        color: red;
+    }
+
+    input[type="text"] {
+        width: 70%;
+        padding: 5px;
+        border: 1px solid rgba(141, 172, 209, 1);
+        margin-right: 10px;
+    }
+
+    button[type="submit"] {
+        background-color: #8DACD1;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #7CA3C1;
+    }
 </style>
+
 
 <body>
 

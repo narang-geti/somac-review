@@ -12,18 +12,33 @@
     margin-top: 40px;
   }
 
-  .layout input {
+  .layout input, .layout textarea {
     width: 100%;
+    margin-top: 10px;
     box-sizing: border-box;
-    margin-top: 10px
+    border-color: rgba(141, 172, 209, 1);
+    color: rgba(141, 172, 209, 1);
+  }
+
+  .layout input:not(:placeholder-shown),
+  .layout textarea:not(:placeholder-shown) {
+    color: black;
   }
 
   .layout textarea {
-    width: 100%;
-    margin-top: 10px;
     min-height: 300px;
   }
+
+  button[type="submit"] {
+    background-color: #8DACD1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    margin-top: 10px;
+  }
 </style>
+
 <body>
 <div class="layout">
   <form th:action="@{/board/update/{id}(id=${board.id})}" method="post">

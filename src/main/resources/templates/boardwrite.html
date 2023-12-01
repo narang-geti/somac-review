@@ -3,34 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <title>리뷰 작성폼</title>
-</head>
+
+
+    <style>
+    #myform {
+        text-align: center;
+    }
+    #myform fieldset{
+        display: inline-block;
+        direction: rtl;
+        border:0;
+        margin-bottom: 1px;
+
+    }
+    #myform fieldset legend{
+        text-align: right;
+    }
+    #myform input[type=radio]{
+        display: none;
+    }
+    #myform label{
+        font-size: 3em;
+        color: transparent;
+        text-shadow: 0 0 0 #f0f0f0;
+    }
+    #myform label:hover{
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    #myform label:hover ~ label{
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    #myform input[type=radio]:checked ~ label{
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    #reviewContents {
+        width: 100%;
+        height: 150px;
+        padding: 5px;
+        box-sizing: border-box;
+        border: solid 1.5px #D3D3D3;
+        border-radius: 5px;
+        font-size: 16px;
+        resize: none;
+    }
+
+
+</style>
 
 <style>
+    /*전체 레이아웃 */
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    /*리뷰 제목 작성*/
+    .layout input {
+        width: 342px;
+        height: 43px;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        margin-top: 14px;
+        color: rgba(141, 172, 209, 1);
+        border-width: 2px;
+        border-color: #838383;
+        padding: 10px;
+    }
+
+    .layout input[type="text"]:not(:placeholder-shown) {
+        color: black;
+    }
+
     .layout {
         width: 500px;
         margin: 0 auto;
-        margin-top: 40px;
-    }
-
-    .layout input {
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: 10px
-    }
-
-    .layout textarea {
-        width: 100%;
         margin-top: 10px;
-        min-height: 300px;
+        text-align: center;
     }
-</style>
+
+    /*리뷰 내용 작성*/
+    .layout textarea {
+        width: 322px;
+        height: 200px;
+        flex-shrink: 0;
+        color: rgba(217, 217, 217, 1);
+        border-width: 2px;
+        border-color: #8DACD1;
+        padding: 10px;
+        margin-bottom: 1px;
+        resize: none;
+    }
+    .layout input[type="text"]:not(:placeholder-shown),
+    .layout textarea:not(:placeholder-shown) {
+        color: black;
+    }
+
+    /*사진 업로드 버튼(숨김)*/
+    #uploadFile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    /* 사진 업로드 버튼(디자인, 가짜) */
+    #uploadButton {
+        display: inline-block;
+        background-color: white;
+        color: black;
+        border: 1px solid #D9D9D9;
+        cursor: pointer;
+        padding: 1px 1px;
+        border-radius: 3px;
+        margin-top: auto;
+        margin-right: 280px;
+        width: 60px;
+    }
+
+    /* 등록, 취소 버튼들의 여백 조정 */
+    .submit-btn,
+    .cancel-btn {
+        margin: 0 10px;
+    }
+    /*등록 버튼*/
+    .submit-btn {
+        background-color: #8DACD1;
+        color: white;
+        padding: 10px 30px;
+        margin-right: 10px;
+        margin-left: 0px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    /*취소 버튼*/
+    .cancel-btn {
+        background-color: #ffffff;
+        color: #838383;
+        padding: 10px 30px;
+        border-color: #838383;
+        border-radius: 20px;
+        margin-right:  80px;
+        border-width: thin;
+    }
+    </style>
+</head>
 <body>
+    <h2 class="header">리뷰 작성하기</h2>
 <div class="layout">
-    <form action="/board/writepro" method="post" enctype="multipart/form-data">
+    <form class="mb-3" name="myform" id="myform" action="/board/writepro" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+            <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+            <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+            <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+            <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+        </fieldset>
         <input name="title" type="text" placeholder="제목">
         <textarea name="content" placeholder="리뷰 작성"></textarea>
         <input type="file" name="file">
-        <button type="submit">작성</button>
+        <button type="submit" class="submit-btn">작성</button>
     </form>
 
 </div>
