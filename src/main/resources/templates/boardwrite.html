@@ -1,71 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>리뷰 작성폼</title>
+    <link href="C:\Users\monst\OneDrive\Desktop\somac_css\star.css" rel="stylesheet" />
     <style>
+        #myform {
+            text-align: center;
+        }
+        #myform fieldset{
+            display: inline-block;
+            direction: rtl;
+            border:0;
+            margin-bottom: 1px;
+
+        }
+        #myform fieldset legend{
+            text-align: right;
+        }
+        #myform input[type=radio]{
+            display: none;
+        }
+        #myform label{
+            font-size: 3em;
+            color: transparent;
+            text-shadow: 0 0 0 #f0f0f0;
+        }
+        #myform label:hover{
+            text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+        }
+        #myform label:hover ~ label{
+            text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+        }
+        #myform input[type=radio]:checked ~ label{
+            text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+        }
+        #reviewContents {
+            width: 100%;
+            height: 150px;
+            padding: 5px;
+            box-sizing: border-box;
+            border: solid 1.5px #D3D3D3;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: none;
+        }
+
+
+    </style>
+
+    <style>
+        /*전체 레이아웃 */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #BBD2EC; /* 배경색 */
-            color: #75F0F2; /* 텍스트 색상 */
-            margin: 0;
-            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        /*리뷰 제목 작성*/
+        .layout input {
+            width: 342px;
+            height: 43px;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            margin-top: 14px;
+            color: rgba(141, 172, 209, 1);
+            border-width: 2px;
+            border-color: #838383;
+            padding: 10px;
+        }
+
+        .layout input[type="text"]:not(:placeholder-shown) {
+            color: black;
         }
 
         .layout {
             width: 500px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #98E1FB; /* 레이아웃 배경색 */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 효과 */
+            margin: 0 auto;
+            margin-top: 10px;
+            text-align: center;
         }
 
-        .layout input, .layout textarea {
-            width: 100%;
+        /*리뷰 내용 작성*/
+        .layout textarea {
+            width: 322px;
+            height: 200px;
+            flex-shrink: 0;
+            color: rgba(217, 217, 217, 1);
+            border-width: 2px;
+            border-color: #8DACD1;
             padding: 10px;
-            margin-top: 10px;
-            box-sizing: border-box;
-            border: 1px solid #75F0F2; /* 테두리 색상 */
-            border-radius: 5px;
-            transition: border-color 0.3s ease; /* 테두리 색상 변화 애니메이션 */
+            margin-bottom: 1px;
+            resize: none;
+        }
+        .layout input[type="text"]:not(:placeholder-shown),
+        .layout textarea:not(:placeholder-shown) {
+            color: black;
         }
 
-        .layout input:focus, .layout textarea:focus {
-            border-color: #7EFACF; /* 포커스 시 테두리 색상 변경 */
+        /*사진 업로드 버튼(숨김)*/
+        #uploadFile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
         }
 
-        .layout input[type="file"] {
-            padding: 5px;
-            background-color: #E9EDEA; /* 파일 입력 배경색 */
-            border: none; /* 파일 입력 테두리 제거 */
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #F9F871; /* 버튼 배경색 */
-            color: #2F3148; /* 버튼 텍스트 색상 */
-            border: none;
-            border-radius: 5px;
+        /* 사진 업로드 버튼(디자인, 가짜) */
+        #uploadButton {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            border: 1px solid #D9D9D9;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* 배경 색상 변화 애니메이션 */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 버튼 그림자 효과 */
+            padding: 1px 1px;
+            border-radius: 3px;
+            margin-top: auto;
+            margin-right: 280px;
+            width: 60px;
         }
 
-        button:hover {
-            background-color: #B3FE9E; /* 호버시 버튼 배경색 변경 */
+        /* 등록, 취소 버튼들의 여백 조정 */
+        .submit-btn,
+        .cancel-btn {
+            margin: 0 10px;
+        }
+        /*등록 버튼*/
+        .submit-btn {
+            background-color: #8DACD1;
+            color: white;
+            padding: 10px 30px;
+            margin-right: 10px;
+            margin-left: 0px;
+            border: none;
+            border-radius: 20px;
+        }
+
+        /*취소 버튼*/
+        .cancel-btn {
+            background-color: #ffffff;
+            color: #838383;
+            padding: 10px 30px;
+            border-color: #838383;
+            border-radius: 20px;
+            margin-right:  80px;
+            border-width: thin;
         }
     </style>
 </head>
+
 <body>
-<div class="layout">
-    <form action="/board/writepro" method="post" enctype="multipart/form-data">
-        <input name="title" type="text" placeholder="제목">
-        <textarea name="content" placeholder="리뷰 작성"></textarea>
-        <input type="file" name="file">
-        <button type="submit">작성</button>
-    </form>
-</div>
+<h2 class="header">리뷰 작성하기</h2>
+<form class="mb-3" name="myform" id="myform" action="/board/writepro" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+        <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+        <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+        <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+        <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+    </fieldset>
+    <div class="layout">
+        <input name="title" type="text" placeholder="제목"><br><br>
+        <textarea name="content" placeholder="somac 등급 분류 서비스에 대한 리뷰를 남겨주세요 :)"></textarea>
+        <input type="file" name="file" id="uploadFile"><br><br>
+        <label for="uploadFile" id="uploadButton">+</label><br><br>
+        <button type="button" onclick="goBack()" class="cancel-btn">취소</button>
+        <button type="submit" class="submit-btn">등록</button>
+    </div>
+</form>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
+
 </html>
