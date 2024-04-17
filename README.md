@@ -1,4 +1,30 @@
-## Spring Boot로 고객 리뷰 페이지 만들기 
+## Spring Boot로 고객 리뷰 페이지 만들기   
+
+## 기술 스택  
+#### Environment:  
+
+- Java 17  
+
+- Gradle build tool with Spring and dependency management plugins  
+
+- MariaDB database  
+
+- JDBC API for database connection  
+
+#### TechStack:  
+
+- Spring Boot 3.2.0  
+
+- Spring Data JPA  
+
+- Thymeleaf template engine  
+
+- Spring Web MVC  
+
+- Lombok library  
+
+- MariaDB JDBC driver  
+
 
 ### 시연 영상
 
