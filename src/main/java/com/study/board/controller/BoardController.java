@@ -24,6 +24,7 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    //시작 페이지
     @GetMapping("/")
     public String start() {
         return "start"; // start.html 뷰의 이름

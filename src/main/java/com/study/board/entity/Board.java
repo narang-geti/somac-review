@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-//Entity는 class가 DB에 있는 table이랑 같다고 해주는거임
+//Entity는 class가 DB에 있는 table이랑 같다고 해준다.
 @Entity
 @Data
 public class Board {
